@@ -1,15 +1,14 @@
-const glob = require('glob'),
-  path = require('path'),
-  UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin'),
-  HtmlWebpackPlugin = require('html-webpack-plugin'),
-  CompressionPlugin = require('compression-webpack-plugin'),
-  ExtractTextPlugin = require('extract-text-webpack-plugin'),
-  PurifyCSSPlugin = require('purifycss-webpack'),
-  autoprefixer = require('autoprefixer'),
-  webpackConfig = require('./webpack.config.base'),
-  helpers = require('./helpers'),
-  DefinePlugin = require('webpack/lib/DefinePlugin'),
-  env = require('../environment/prod.env');
+const glob = require('glob');
+const path = require('path');
+const UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CompressionPlugin = require('compression-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const PurifyCSSPlugin = require('purifycss-webpack');
+const autoprefixer = require('autoprefixer');
+const webpackConfig = require('./webpack.config.base');
+const helpers = require('./helpers');
+const DefinePlugin = require('webpack/lib/DefinePlugin');
 
 const extractSass = new ExtractTextPlugin({
   filename: 'css/[name].[contenthash].css',
@@ -98,7 +97,6 @@ webpackConfig.plugins = [...webpackConfig.plugins,
     test: /\.min\.js$/
   }),
   new DefinePlugin({
-    'process.env': env
   }),
 ];
 
