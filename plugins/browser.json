@@ -7,19 +7,10 @@
         "files": {}
     },
     "installed_plugins": {
-        "cordova-plugin-battery-status": {
-            "PACKAGE_NAME": "tech.spiffy.podcast"
-        },
-        "cordova-plugin-camera": {
-            "PACKAGE_NAME": "tech.spiffy.podcast"
-        },
         "cordova-plugin-media-capture": {
             "PACKAGE_NAME": "tech.spiffy.podcast"
         },
         "cordova-plugin-console": {
-            "PACKAGE_NAME": "tech.spiffy.podcast"
-        },
-        "cordova-plugin-contacts": {
             "PACKAGE_NAME": "tech.spiffy.podcast"
         },
         "cordova-plugin-device": {
@@ -37,9 +28,6 @@
         "cordova-plugin-file-transfer": {
             "PACKAGE_NAME": "tech.spiffy.podcast"
         },
-        "cordova-plugin-geolocation": {
-            "PACKAGE_NAME": "tech.spiffy.podcast"
-        },
         "cordova-plugin-globalization": {
             "PACKAGE_NAME": "tech.spiffy.podcast"
         },
@@ -53,12 +41,6 @@
             "PACKAGE_NAME": "tech.spiffy.podcast"
         },
         "cordova-plugin-splashscreen": {
-            "PACKAGE_NAME": "tech.spiffy.podcast"
-        },
-        "cordova-plugin-statusbar": {
-            "PACKAGE_NAME": "tech.spiffy.podcast"
-        },
-        "cordova-plugin-vibration": {
             "PACKAGE_NAME": "tech.spiffy.podcast"
         },
         "cordova-plugin-whitelist": {

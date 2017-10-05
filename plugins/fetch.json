@@ -1,20 +1,4 @@
 {
-    "cordova-plugin-battery-status": {
-        "source": {
-            "type": "registry",
-            "id": "cordova-plugin-battery-status@~1.1.1"
-        },
-        "is_top_level": true,
-        "variables": {}
-    },
-    "cordova-plugin-camera": {
-        "source": {
-            "type": "registry",
-            "id": "cordova-plugin-camera@~2.1.1"
-        },
-        "is_top_level": true,
-        "variables": {}
-    },
     "cordova-plugin-media-capture": {
         "source": {
             "type": "registry",
@@ -43,14 +27,6 @@
         "source": {
             "type": "registry",
             "id": "cordova-plugin-console@~1.0.2"
-        },
-        "is_top_level": true,
-        "variables": {}
-    },
-    "cordova-plugin-contacts": {
-        "source": {
-            "type": "registry",
-            "id": "cordova-plugin-contacts@~2.0.1"
         },
         "is_top_level": true,
         "variables": {}
@@ -95,14 +71,6 @@
         "is_top_level": true,
         "variables": {}
     },
-    "cordova-plugin-geolocation": {
-        "source": {
-            "type": "registry",
-            "id": "cordova-plugin-geolocation@~2.1.0"
-        },
-        "is_top_level": true,
-        "variables": {}
-    },
     "cordova-plugin-globalization": {
         "source": {
             "type": "registry",
@@ -139,22 +107,6 @@
         "source": {
             "type": "registry",
             "id": "cordova-plugin-splashscreen@~3.2.1"
-        },
-        "is_top_level": true,
-        "variables": {}
-    },
-    "cordova-plugin-statusbar": {
-        "source": {
-            "type": "registry",
-            "id": "cordova-plugin-statusbar@~2.1.2"
-        },
-        "is_top_level": true,
-        "variables": {}
-    },
-    "cordova-plugin-vibration": {
-        "source": {
-            "type": "registry",
-            "id": "cordova-plugin-vibration@~2.1.0"
         },
         "is_top_level": true,
         "variables": {}
