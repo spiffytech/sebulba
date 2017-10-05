@@ -3,6 +3,10 @@ import Vuex from 'vuex';
 import VueRouter from 'vue-router';
 import { sync } from 'vuex-router-sync';
 
+require('material-components-web/dist/material-components-web.min.css');
+import * as mdc from 'material-components-web';
+mdc.autoInit();
+
 import Home from './scenes/home';
 import mkStore from './store';
 

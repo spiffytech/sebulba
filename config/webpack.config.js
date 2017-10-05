@@ -24,6 +24,7 @@ const purifyCss = new PurifyCSSPlugin({
 });
 
 webpackConfig.module.rules = [...webpackConfig.module.rules,
+  { test: /\.css$/, loader: "style-loader!css-loader" },
   {
     test: /\.scss$/,
     use: extractSass.extract({
