@@ -8,10 +8,9 @@ import * as mdc from 'material-components-web';
 mdc.autoInit();
 
 import Home from './scenes/home';
-import mkStore from './store';
+import store from './store';
 
 Vue.use(VueRouter);
-Vue.use(Vuex);
 
 // window.sqlitePlugin.openDatabase({name: 'podcast.db', location: 'default'});
 
@@ -29,7 +28,6 @@ let router = new VueRouter({
   ]
 });
 
-const store = mkStore();
 sync(store, router);
 
 (window as any).store = store;

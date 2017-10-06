@@ -1,5 +1,5 @@
 {
-    "name": "podcast",
+    "name": "sebulba",
     "version": "1.0.0",
     "description": "A PhoneGap Hello World template",
     "main": "index.js",
@@ -19,7 +19,6 @@
         "cordova-plugin-media": "~2.2.0",
         "cordova-plugin-media-capture": "~1.2.0",
         "cordova-plugin-network-information": "~1.2.0",
-        "cordova-plugin-splashscreen": "~3.2.1",
         "cordova-plugin-whitelist": "~1.2.1"
     },
     "devDependencies": {
@@ -37,6 +36,7 @@
         "purify-css": "^1.2.5",
         "purifycss-webpack": "^0.7.0",
         "raw-loader": "^0.5.1",
+        "rss-parser": "^2.10.6",
         "style-loader": "^0.19.0",
         "tslint": "^5.7.0",
         "tslint-loader": "^3.5.3",
@@ -68,7 +68,6 @@
             "cordova-plugin-media": {},
             "cordova-plugin-media-capture": {},
             "cordova-plugin-network-information": {},
-            "cordova-plugin-splashscreen": {},
             "cordova-plugin-whitelist": {}
         }
     }

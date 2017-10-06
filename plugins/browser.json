@@ -40,9 +40,6 @@
         "cordova-plugin-network-information": {
             "PACKAGE_NAME": "tech.spiffy.podcast"
         },
-        "cordova-plugin-splashscreen": {
-            "PACKAGE_NAME": "tech.spiffy.podcast"
-        },
         "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "tech.spiffy.podcast"
         }

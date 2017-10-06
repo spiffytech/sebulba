@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="tech.spiffy.podcast" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
-    <name>podcast</name>
+    <name>Sebulba</name>
     <description>
         Hello World sample application that responds to the deviceready event.
     </description>
@@ -106,6 +106,5 @@
     <plugin name="cordova-plugin-media" spec="~2.2.0" />
     <plugin name="cordova-plugin-media-capture" spec="~1.2.0" />
     <plugin name="cordova-plugin-network-information" spec="~1.2.0" />
-    <plugin name="cordova-plugin-splashscreen" spec="~3.2.1" />
     <plugin name="cordova-plugin-whitelist" spec="~1.2.1" />
 </widget>
