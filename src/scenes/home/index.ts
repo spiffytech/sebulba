@@ -2,10 +2,12 @@ import Vue from 'vue';
 import Component from 'vue-class-component';
 
 import {parseOpml} from '../../lib/feedManager';
+import Podcasts from './components/podcasts';
 import store from '../../store';
 
 @Component({
-  template: require('./index.html')
+  template: require('./index.html'),
+  components: {Podcasts}
 })
 export default class Home extends Vue {
   get feeds() {
