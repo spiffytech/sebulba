@@ -8,8 +8,11 @@ import store from '../../store';
   template: require('./index.html')
 })
 export default class Home extends Vue {
-  get path() {
-    return this.$store.state;
+  get feeds() {
+    return this.$store.state.feeds;
+  }
+  get items() {
+    return this.$store.state.items;
   }
 
   fileSelected(e) {
