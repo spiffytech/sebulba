@@ -1,6 +1,8 @@
 <div class="">
-  <p>Hello, world2</p>
-  <p>Feeds: {{JSON.stringify(this.feeds)}}</p>
-  <p>Items: {{JSON.stringify(this.items)}}</p>
   <input @change="fileSelected" name="opml" type="file">
+  <h1>Feeds</h1>
+  <div v-for="feed in feeds">
+    <h2>{{feed.name}} {{feed.error}}</h2>
+    <p v-for="feedItem in items[feed.url]">{{feedItem.title}}</p>
+  </div>
 </div>

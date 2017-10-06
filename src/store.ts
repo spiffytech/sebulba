@@ -9,7 +9,13 @@ Vue.use(Vuex);
 const store = new Vuex.Store({
   state: {
     feeds: {} as {[url: string]: Feed},
-    items: {} as {[feed: string]: {[guid: string]: FeedItem[]}},
+    items: {} as {[feed: string]: {[guid: string]: FeedItem}},
+  },
+  getters: {
+    /*
+    feedItems(state): return {[feed: string]: FeedItem[]} {
+    }
+    */
   },
   mutations: {
     updateFeed(state, feed: Feed) {
