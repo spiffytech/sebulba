@@ -23,11 +23,17 @@ const store = new Vuex.Store({
   actions: {
     async updateFeed(context, feed) {
       context.commit('updateFeed', feed);
-      const feedItems = await fetchFeed(feed);
-      console.log(feedItems);
-      feedItems.forEach((feedItem) =>
-        context.commit('updateFeedItem', {feed, feedItem})
-      );
+      try {
+        const feedItems = await fetchFeed(feed);
+        feedItems.forEach((feedItem) =>
+          context.commit('updateFeedItem', {feed, feedItem})
+        );
+        feed.error = null;
+        context.commit('updateFeed', feed);
+      } catch (ex) {
+        feed.error = ex.message;
+        context.commit('updateFeed', feed);
+      }
     }
   }
 });
