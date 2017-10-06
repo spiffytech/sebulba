@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import createPersistedState from 'vuex-persistedstate';
 
 import {fetchFeed} from './lib/feedManager';
 import {Feed, FeedItem} from './lib/types';
@@ -7,6 +8,7 @@ import {Feed, FeedItem} from './lib/types';
 Vue.use(Vuex);
 
 const store = new Vuex.Store({
+  plugins: [createPersistedState()],
   state: {
     feeds: {} as {[url: string]: Feed},
     items: {} as {[feed: string]: {[guid: string]: FeedItem}},
