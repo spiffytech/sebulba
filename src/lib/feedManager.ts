@@ -14,13 +14,14 @@ export function parseOpml(opml: string): Feed[] {
   }));
 }
 
-export async function fetchFeed(feed: Feed): Promise<FeedItem[]> {
+export async function fetchFeed(feed: Feed): Promise<{image: string; items: FeedItem[]}> {
   const response = await(fetch(feed.url));
   const xml = await response.text();
   const parser = new FeedMe(true);
   parser.write(xml);
-  const feedItems = parser.done().items;
-  return feedItems.map((entry) => {
+  const parserResult = parser.done();
+  const feedItems = parserResult.items;
+  const items = feedItems.map((entry) => {
     const item: FeedItem = {
       title: entry.title,
       pubDate: entry.pubDate,
@@ -30,4 +31,7 @@ export async function fetchFeed(feed: Feed): Promise<FeedItem[]> {
     };
     return item;
   });
+
+  console.log(parserResult.image.url);
+  return {image: parserResult.image.url, items};
 }

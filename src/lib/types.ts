@@ -1,6 +1,7 @@
 export interface Feed {
   name: string;
   url: string;
+  image?: string;
   error?: string | null;
 }
 
