@@ -9,9 +9,4 @@
     <span class="mdc-tab-bar__indicator"></span>
   </nav>
   <podcasts></podcasts>
-  <h1>Feeds</h1>
-  <div v-for="feed in feeds">
-    <h2>{{feed.name}} {{feed.error}}</h2>
-    <p v-for="feedItem in items[feed.url]">{{feedItem.title}}</p>
-  </div>
 </div>
