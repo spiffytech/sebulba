@@ -17,6 +17,12 @@ export default class Home extends Vue {
     return this.$store.state.items;
   }
 
+  refresh() {
+    Object.keys(this.$store.state.feeds).forEach((feed_url) =>
+      store.dispatch('updateFeed', this.$store.state.feeds[feed_url])
+    );
+  }
+
   fileSelected(e) {
     const reader = new FileReader();
     reader.onload = (event) => {
