@@ -38,8 +38,8 @@ let config = {
 	},
 	plugins: [
 		new CopyWebpackPlugin([{
-			from: 'src/assets',
-			to: './assets'
+			from: 'src/static',
+			to: './static'
 		}, ]),
 	]
 };

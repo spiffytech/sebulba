@@ -1,0 +1,13 @@
+<li class="mdc-list-item">
+  <img :src="this.feed.image" class="mdc-list-item__start-detail" />
+  <span class="mdc-list-item__text">
+    {{this.feedItem.title}}
+    <span class="mdc-list-item__text__secondary">Some details here</span>
+  </span>
+  <a
+    class="mdc-list-item__end-detail material-icons" href="#"
+    onclick="event.preventDefault();"
+  >
+    add_to_queue
+  </a>
+</li>

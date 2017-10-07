@@ -8,6 +8,7 @@ import * as mdc from 'material-components-web';
 mdc.autoInit();
 
 import Home from './scenes/home';
+import Feed from './scenes/feed';
 import store from './store';
 
 Vue.use(VueRouter);
@@ -20,11 +21,11 @@ const base =
   '/android_asset/www/' :
   '/';
 let router = new VueRouter({
-  mode: 'history',
   base,
   routes: [
     { path: '/index.html', component: Home },  // PhoneGap app
     { path: '/', component: Home },  // Browser
+    { path: '/feed/:id', component: Feed, name: 'feed', props: true },
   ]
 });
 
