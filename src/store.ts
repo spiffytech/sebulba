@@ -33,7 +33,6 @@ const store = new Vuex.Store({
       context.commit('updateFeed', feed);
       try {
         const {image, items: feedItems} = await fetchFeed(feed);
-        console.log('i', image);
         context.commit('updateFeed', {...feed, image, error: null});
         feedItems.forEach((feedItem) =>
           context.commit('updateFeedItem', {feed, feedItem})

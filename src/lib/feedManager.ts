@@ -32,6 +32,5 @@ export async function fetchFeed(feed: Feed): Promise<{image: string; items: Feed
     return item;
   });
 
-  console.log(parserResult.image.url);
   return {image: parserResult.image.url, items};
 }
