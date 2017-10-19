@@ -11,9 +11,10 @@ export interface Enclosure {
 }
 
 export interface FeedItem {
+  feedId: string;
+  guid: string;
   title: string;
   pubDate: string;
   content: string;
-  guid: string;
   enclosure: Enclosure;
 }

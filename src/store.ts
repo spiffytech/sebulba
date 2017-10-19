@@ -7,11 +7,30 @@ import {Feed, FeedItem} from './lib/types';
 
 Vue.use(Vuex);
 
+/*
+function filterLinkedList(list: Playlist, filter: (item: PlaylistItem) => boolean) {
+  const iter = (acc: PlaylistItem[], item: PlaylistItem): PlaylistItem[] => {
+    if (filter(item)) acc.push(item);
+    if (item.child === null) return acc;
+    return iter(acc, list.children[item.child]);
+  };
+
+  if (list.root === null) return [];
+  return iter([], list.root);
+}
+
+function findLastByFeed(playlist: Playlist, feed: string) {
+  const itemsInFeed = filterLinkedList(playlist, (item) => item.feedId === feed);
+  return itemsInFeed[itemsInFeed.length - 1];
+}
+*/
+
 const store = new Vuex.Store({
   plugins: [createPersistedState()],
   state: {
     feeds: {} as {[url: string]: Feed},
     items: {} as {[feed: string]: {[guid: string]: FeedItem}},
+    playlist: [] as string[],
   },
   getters: {
     /*
@@ -20,6 +39,12 @@ const store = new Vuex.Store({
     */
   },
   mutations: {
+    addEpisodeToPlaylist(state, feedItem: FeedItem) {
+      // TODO: add playlist item in intelligent place
+      const id = feedItem.feedId + feedItem.guid;
+      if (state.playlist.indexOf(id) !== -1) return;
+      state.playlist.push(id);
+    },
     updateFeed(state, feed: Feed) {
       Vue.set(state.feeds, feed.url, feed);
     },

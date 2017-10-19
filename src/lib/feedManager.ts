@@ -20,13 +20,14 @@ export async function fetchFeed(feed: Feed): Promise<{image: string; items: Feed
   const parser = new FeedMe(true);
   parser.write(xml);
   const parserResult = parser.done();
-  const feedItems = parserResult.items;
+  const feedItems: any[] = parserResult.items;
   const items = feedItems.map((entry) => {
     const item: FeedItem = {
+      feedId: feed.url,
+      guid: entry.guid.text,
       title: entry.title,
       pubDate: entry.pubDate,
       content: entry['content:encoded'] || entry.content || entry.description,
-      guid: entry.guid.text,
       enclosure: entry.enclosure,
     };
     return item;

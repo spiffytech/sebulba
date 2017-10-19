@@ -13,4 +13,8 @@ import {Feed, FeedItem} from '../../lib/types';
 export default class Podcast extends Vue {
   feed: Feed;
   feedItem: FeedItem;
+
+  addToPlaylist() {
+    this.$store.commit('addEpisodeToPlaylist', this.feedItem);
+  }
 }
