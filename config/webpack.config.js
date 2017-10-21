@@ -78,7 +78,7 @@ webpackConfig.plugins = [...webpackConfig.plugins,
     template: helpers.root('/src/index.html'),
     minify: {
       removeComments: true,
-      collapseWhitespace: true,
+      collapseWhitespace: false,
       removeRedundantAttributes: true,
       useShortDoctype: true,
       removeEmptyAttributes: true,
