@@ -12,6 +12,7 @@ export interface Enclosure {
 
 export interface Episode {
   podcastId: string;
+  id: string;
   guid: string;
   title: string;
   pubDate: string;

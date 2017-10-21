@@ -23,6 +23,7 @@ export async function fetchPodcast(podcast: Podcast): Promise<{image: string; ep
   const episodes = episodesRaw.map((entry) => {
     const episode: Episode = {
       podcastId: podcast.url,
+      id: entry.enclosure.url,
       guid: entry.guid.text,
       title: entry.title,
       pubDate: entry.pubDate,
