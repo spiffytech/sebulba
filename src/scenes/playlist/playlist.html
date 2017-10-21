@@ -1,12 +1,14 @@
-<ul class="mdc-list mdc-list--two-line mdc-list--avatar-list">
-  <episode
-    v-for="episode in episodes"
-    :feed="feeds[episode.feedId]"
-    :feedItem="episode"
-    :key="episode.feedId + episode.guid"
-  >
-    <i class="material-icons" href="#" @click="">
-      play_arrow
-    </i>
-  </episode>
-</ul>
+<app-nav activeTab="playlist">
+  <ul class="mdc-list mdc-list--two-line mdc-list--avatar-list">
+    <episode
+      v-for="episode in episodes"
+      :feed="feeds[episode.feedId]"
+      :feedItem="episode"
+      :key="episode.feedId + episode.guid"
+    >
+      <i class="material-icons" href="#" @click="">
+        play_arrow
+      </i>
+    </episode>
+  </ul>
+</app-nav>
