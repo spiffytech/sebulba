@@ -9,6 +9,7 @@ mdc.autoInit();
 
 import Home from './scenes/home';
 import Feed from './scenes/feed';
+import Playlist from './scenes/playlist/playlist';
 import store from './store';
 
 Vue.use(VueRouter);
@@ -20,12 +21,15 @@ const base =
   document.location.pathname === '/android_asset/www/index.html' ?
   '/android_asset/www/' :
   '/';
+
 let router = new VueRouter({
   base,
   routes: [
     { path: '/index.html', component: Home },  // PhoneGap app
     { path: '/', component: Home },  // Browser
     { path: '/feed/:id', component: Feed, name: 'feed', props: true },
+    { path: '/playlist', component: Playlist, name: 'playlist', props: true },
+    { path: '/now-playing', component: Home, name: 'nowPlaying', props: true },
   ]
 });
 

@@ -7,21 +7,38 @@ import {Feed, FeedItem} from './lib/types';
 
 Vue.use(Vuex);
 
+interface PlaylistItem {
+  feedId: string;
+  episodeId: string;
+}
+
 const store = new Vuex.Store({
   plugins: [createPersistedState()],
   state: {
     feeds: {} as {[url: string]: Feed},
     items: {} as {[feed: string]: {[guid: string]: FeedItem}},
-    playlist: [] as string[],
+    playlist: [] as PlaylistItem[],
   },
   getters: {
+    playlist(state): FeedItem[] {
+      return state.playlist.map((playlistItem) =>
+        state.items[playlistItem.feedId][playlistItem.episodeId]
+      );
+    },
   },
   mutations: {
     addEpisodeToPlaylist(state, feedItem: FeedItem) {
       // TODO: add playlist item in intelligent place
-      const id = feedItem.feedId + feedItem.guid;
-      if (state.playlist.indexOf(id) !== -1) return;
-      state.playlist.push(id);
+      const playlistItem = {
+        feedId: feedItem.feedId,
+        episodeId: feedItem.guid,
+      };
+      if (state.playlist.findIndex((item) =>
+        item.feedId === playlistItem.feedId &&
+        item.episodeId === playlistItem.episodeId
+      ) !== -1) return;
+
+      state.playlist.push(playlistItem);
     },
     updateFeed(state, feed: Feed) {
       Vue.set(state.feeds, feed.url, feed);
@@ -29,6 +46,9 @@ const store = new Vuex.Store({
     updateFeedItem(state, {feed, feedItem}: {feed: Feed, feedItem: FeedItem}) {
       Vue.set(state.items, feed.url, state.items[feed.url] || {});
       Vue.set(state.items[feed.url], feedItem.guid, feedItem);
+    },
+    clearPlaylist(state) {
+      state.playlist = [];
     }
   },
   actions: {

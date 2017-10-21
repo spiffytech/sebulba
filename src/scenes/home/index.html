@@ -3,10 +3,20 @@
   <button @click="refresh">Refresh feeds</button>
 
   <nav class="mdc-tab-bar">
-    <a class="mdc-tab mdc-tab--active" href="#podcasts">Podcasts</a>
-    <a class="mdc-tab" href="#playlist">Playlist</a>
-    <a class="mdc-tab" href="#now-playing">Now Playing</a>
+    <a class="mdc-tab mdc-tab--active" href="podcasts">Podcasts</a>
+    <router-link :to="{name: 'playlist'}" class="mdc-tab">
+      Playlist
+    </router-link>
+    <router-link :to="{name: 'nowPlaying'}" class="mdc-tab">
+      Now Playing
+    </router-link>
     <span class="mdc-tab-bar__indicator"></span>
   </nav>
-  <podcasts></podcasts>
+  <div id="podcasts">
+    <podcasts></podcasts>
+  </div>
+  <div id="playlist">
+  </div>
+  <div id="now-playing">
+  </div>
 </div>
