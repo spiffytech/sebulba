@@ -1,14 +1,14 @@
 import Vue from 'vue';
 import Component from 'vue-class-component';
 
-import Podcast from '../../components/podcast';
+import Episode from '../../components/episode/episode';
 
 @Component({
-  template: require('./index.html'),
+  template: require('./feed.html'),
   props: {
     id: String,
   },
-  components: {Podcast},
+  components: {Episode},
 })
 export default class Feed extends Vue {
   id: string;

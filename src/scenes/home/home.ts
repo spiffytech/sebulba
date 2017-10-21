@@ -6,7 +6,7 @@ import Podcasts from './components/podcasts';
 import store from '../../store';
 
 @Component({
-  template: require('./index.html'),
+  template: require('./home.html'),
   components: {Podcasts}
 })
 export default class Home extends Vue {

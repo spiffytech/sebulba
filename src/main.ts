@@ -7,8 +7,8 @@ require('material-components-web/dist/material-components-web.min.css');
 const mdc = require('material-components-web');
 mdc.autoInit();
 
-import Home from './scenes/home';
-import Feed from './scenes/feed';
+import Home from './scenes/home/home';
+import Feed from './scenes/feed/feed';
 import Playlist from './scenes/playlist/playlist';
 import store from './store';
 
