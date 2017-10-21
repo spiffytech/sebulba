@@ -4,10 +4,7 @@
     {{this.feedItem.title}}
     <span class="mdc-list-item__text__secondary">Some details here</span>
   </span>
-  <i
-    class="mdc-list-item__end-detail material-icons" href="#"
-    @click="addToPlaylist"
-  >
-    add_to_queue
-</i>
+  <span class="mdc-list-item__end-detail"></span>
+    <slot></slot>
+  </span>
 </li>
