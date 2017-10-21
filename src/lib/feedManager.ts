@@ -1,8 +1,8 @@
 const FeedMe = require('feedme');
 
-import {Feed, FeedItem} from '../lib/types';
+import {Podcast, Episode} from '../lib/types';
 
-export function parseOpml(opml: string): Feed[] {
+export function parseOpml(opml: string): Podcast[] {
   const dom = new DOMParser().parseFromString(opml, 'text/xml');
   const nodes = Array.from(
     dom.querySelectorAll('body outline[type="rss"][text][xmlUrl]')
@@ -13,24 +13,24 @@ export function parseOpml(opml: string): Feed[] {
   }));
 }
 
-export async function fetchFeed(feed: Feed): Promise<{image: string; items: FeedItem[]}> {
-  const response = await(fetch(feed.url));
+export async function fetchPodcast(podcast: Podcast): Promise<{image: string; episodes: Episode[]}> {
+  const response = await(fetch(podcast.url));
   const xml = await response.text();
   const parser = new FeedMe(true);
   parser.write(xml);
   const parserResult = parser.done();
-  const feedItems: any[] = parserResult.items;
-  const items = feedItems.map((entry) => {
-    const item: FeedItem = {
-      feedId: feed.url,
+  const episodesRaw: any[] = parserResult.items;
+  const episodes = episodesRaw.map((entry) => {
+    const episode: Episode = {
+      podcastId: podcast.url,
       guid: entry.guid.text,
       title: entry.title,
       pubDate: entry.pubDate,
       content: entry['content:encoded'] || entry.content || entry.description,
       enclosure: entry.enclosure,
     };
-    return item;
+    return episode;
   });
 
-  return {image: parserResult.image.url, items};
+  return {image: parserResult.image.url, episodes};
 }

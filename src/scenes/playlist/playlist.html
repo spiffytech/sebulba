@@ -1,14 +1,14 @@
 <app-nav activeTab="playlist">
   <ul class="mdc-list mdc-list--two-line mdc-list--avatar-list">
-    <episode
+    <episode-view
       v-for="episode in episodes"
-      :feed="feeds[episode.feedId]"
-      :feedItem="episode"
-      :key="episode.feedId + episode.guid"
+      :podcast="podcasts[episode.podcastId]"
+      :episode="episode"
+      :key="episode.podcastId + episode.guid"
     >
       <i class="material-icons" href="#" @click="">
         play_arrow
       </i>
-    </episode>
+    </episode-view>
   </ul>
 </app-nav>

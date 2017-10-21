@@ -1,18 +1,18 @@
 import Vue from 'vue';
 import Component from 'vue-class-component';
 
-import Episode from '../../components/episode/episode';
+import EpisodeView from '../../components/episode/episode';
 import AppNav from '../../components/appnav/appnav';
 
 @Component({
   template: require('./playlist.html'),
   props: {
   },
-  components: {AppNav, Episode}
+  components: {AppNav, EpisodeView}
 })
 export default class Playlist extends Vue {
-  get feeds() {
-    return this.$store.state.feeds;
+  get podcasts() {
+    return this.$store.state.podcasts;
   }
 
   get episodes() {

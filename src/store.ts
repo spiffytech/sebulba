@@ -2,67 +2,67 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 const createPersistedState = require('vuex-persistedstate');
 
-import {fetchFeed} from './lib/feedManager';
-import {Feed, FeedItem} from './lib/types';
+import {fetchPodcast} from './lib/feedManager';
+import {Podcast, Episode} from './lib/types';
 
 Vue.use(Vuex);
 
 interface PlaylistItem {
-  feedId: string;
+  podcastId: string;
   episodeId: string;
 }
 
 const store = new Vuex.Store({
   plugins: [createPersistedState()],
   state: {
-    feeds: {} as {[url: string]: Feed},
-    items: {} as {[feed: string]: {[guid: string]: FeedItem}},
+    podcasts: {} as {[url: string]: Podcast},
+    episodes: {} as {[podcastId: string]: {[guid: string]: Episode}},
     playlist: [] as PlaylistItem[],
   },
   getters: {
-    playlist(state): FeedItem[] {
+    playlist(state): Episode[] {
       return state.playlist.map((playlistItem) =>
-        state.items[playlistItem.feedId][playlistItem.episodeId]
+        state.episodes[playlistItem.podcastId][playlistItem.episodeId]
       );
     },
   },
   mutations: {
-    addEpisodeToPlaylist(state, feedItem: FeedItem) {
+    addEpisodeToPlaylist(state, episode: Episode) {
       // TODO: add playlist item in intelligent place
       const playlistItem = {
-        feedId: feedItem.feedId,
-        episodeId: feedItem.guid,
+        podcastId: episode.podcastId,
+        episodeId: episode.guid,
       };
       if (state.playlist.findIndex((item) =>
-        item.feedId === playlistItem.feedId &&
+        item.podcastId === playlistItem.podcastId &&
         item.episodeId === playlistItem.episodeId
       ) !== -1) return;
 
       state.playlist.push(playlistItem);
     },
-    updateFeed(state, feed: Feed) {
-      Vue.set(state.feeds, feed.url, feed);
+    updatePodcast(state, podcast: Podcast) {
+      Vue.set(state.podcasts, podcast.url, podcast);
     },
-    updateFeedItem(state, {feed, feedItem}: {feed: Feed, feedItem: FeedItem}) {
-      Vue.set(state.items, feed.url, state.items[feed.url] || {});
-      Vue.set(state.items[feed.url], feedItem.guid, feedItem);
+    updateEpisode(state, {podcast, episode}: {podcast: Podcast, episode: Episode}) {
+      Vue.set(state.episodes, podcast.url, state.episodes[podcast.url] || {});
+      Vue.set(state.episodes[podcast.url], episode.guid, episode);
     },
     clearPlaylist(state) {
       state.playlist = [];
     }
   },
   actions: {
-    async updateFeed(context, feed) {
-      context.commit('updateFeed', feed);
+    async updatePodcast(context, podcast) {
+      context.commit('updatePodcast', podcast);
       try {
-        const {image, items: feedItems} = await fetchFeed(feed);
-        context.commit('updateFeed', {...feed, image, error: null});
-        feedItems.forEach((feedItem) =>
-          context.commit('updateFeedItem', {feed, feedItem})
+        const {image, episodes} = await fetchPodcast(podcast);
+        context.commit('updatePodcast', {...podcast, image, error: null});
+        episodes.forEach((episode) =>
+          context.commit('updateEpisode', {podcast, episode})
         );
-        feed.error = null;
+        podcast.error = null;
       } catch (ex) {
-        context.commit('updateFeed', {...feed, error: ex.message});
+        context.commit('updatePodcast', {...podcast, error: ex.message});
       }
     }
   }

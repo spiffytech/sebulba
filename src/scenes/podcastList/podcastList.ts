@@ -8,7 +8,7 @@ import AppNav from '../../components/appnav/appnav';
   components: {AppNav},
 })
 export default class PodcastList extends Vue {
-  get feeds() {
-    return this.$store.state.feeds;
+  get podcasts() {
+    return this.$store.state.podcasts;
   }
 }

@@ -1,0 +1,12 @@
+<ul class="mdc-list mdc-list--two-line mdc-list--avatar-list">
+  <episode-View
+    v-for="episode in episodes"
+    :podcast="podcast"
+    :episode="episode"
+    :key="episode.guid"
+  >
+    <i class="material-icons" href="#" @click="addToPlaylist(episode)">
+      add_to_queue
+    </i>
+  </episode-view>
+</ul>

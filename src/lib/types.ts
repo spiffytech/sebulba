@@ -1,4 +1,4 @@
-export interface Feed {
+export interface Podcast {
   name: string;
   url: string;
   image?: string;
@@ -10,8 +10,8 @@ export interface Enclosure {
   type: string;
 }
 
-export interface FeedItem {
-  feedId: string;
+export interface Episode {
+  podcastId: string;
   guid: string;
   title: string;
   pubDate: string;

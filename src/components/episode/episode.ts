@@ -1,16 +1,16 @@
 import Vue from 'vue';
 import Component from 'vue-class-component';
 
-import {Feed, FeedItem} from '../../lib/types';
+import {Podcast, Episode} from '../../lib/types';
 
 @Component({
   template: require('./episode.html'),
   props: {
-    feed: Object,
-    feedItem: Object,
+    podcast: Object,
+    episode: Object,
   }
 })
-export default class Episode extends Vue {
-  feed: Feed;
-  feedItem: FeedItem;
+export default class EpisodeView extends Vue {
+  podcast: Podcast;
+  episode: Episode;
 }

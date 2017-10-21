@@ -17,8 +17,8 @@ export default class AppNav extends Vue {
   }
 
   refresh() {
-    Object.keys(this.$store.state.feeds).forEach((feed_url) =>
-      this.$store.dispatch('updateFeed', this.$store.state.feeds[feed_url])
+    Object.keys(this.$store.state.podcasts).forEach((podcastUrl) =>
+      this.$store.dispatch('updatePodcast', this.$store.state.podcasts[podcastUrl])
     );
   }
 
@@ -26,8 +26,8 @@ export default class AppNav extends Vue {
     const reader = new FileReader();
     reader.onload = (event) => {
       const opmlText = (event.target as any).result;
-      const feeds = parseOpml(opmlText);
-      feeds.forEach((feed) => this.$store.dispatch('updateFeed', feed));
+      const podcasts = parseOpml(opmlText);
+      podcasts.forEach((podcast) => this.$store.dispatch('updatePodcast', podcast));
     };
     reader.readAsText(e.target.files[0]);
   }

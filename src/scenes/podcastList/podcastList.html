@@ -1,13 +1,13 @@
 <app-nav activeTab="podcasts">
   <ul class="mdc-list mdc-list--two-line mdc-list--avatar-list">
-    <li v-for="feed in feeds" class="mdc-list-item">
-      <img :src="feed.image" class="mdc-list-item__start-detail" />
+    <li v-for="podcast in podcasts" class="mdc-list-item">
+      <img :src="podcast.image" class="mdc-list-item__start-detail" />
       <router-link
-        :to="{name: 'feed', params: {id: feed.url}}"
+        :to="{name: 'podcast', params: {id: podcast.url}}"
         class="mdc-list-item__text"
         style="color: var(--mdc-theme-text-primary-on-primary-light); text-decoration: none;"
       >
-        {{feed.name}}
+        {{podcast.name}}
         <span class="mdc-list-item__text__secondary">Details</span>
       </router-link>
     </li>
