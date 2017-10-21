@@ -1,0 +1,30 @@
+<div class="">
+  <input @change="fileSelected" name="opml" type="file">
+  <button @click="refresh">Refresh feeds</button>
+
+  <nav class="mdc-tab-bar">
+    <router-link
+      :to="{name: 'podcasts'}"
+      :class="['mdc-tab', activeClass('podcasts')]"
+    >
+      Podcasts
+    </router-link>
+
+    <router-link
+      :to="{name: 'playlist'}"
+      :class="['mdc-tab', activeClass('playlist')]"
+    >
+      Playlist
+    </router-link>
+
+    <router-link
+      :to="{name: 'nowPlaying'}"
+      :class="['mdc-tab', activeClass('nowPlaying')]"
+    >
+      Now Playing
+    </router-link>
+
+    <span class="mdc-tab-bar__indicator"></span>
+  </nav>
+  <slot></slot>
+</div>

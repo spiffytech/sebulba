@@ -7,7 +7,7 @@ require('material-components-web/dist/material-components-web.min.css');
 const mdc = require('material-components-web');
 mdc.autoInit();
 
-import Home from './scenes/home/home';
+import PodcastList from './scenes/podcastList/podcastList';
 import Feed from './scenes/feed/feed';
 import Playlist from './scenes/playlist/playlist';
 import store from './store';
@@ -25,11 +25,12 @@ const base =
 let router = new VueRouter({
   base,
   routes: [
-    { path: '/index.html', component: Home },  // PhoneGap app
-    { path: '/', component: Home },  // Browser
+    { path: '/index.html', component: PodcastList },  // PhoneGap app
+    { path: '/', component: PodcastList },  // Browser
     { path: '/feed/:id', component: Feed, name: 'feed', props: true },
+    { path: '/podcasts', component: PodcastList, name: 'podcasts', props: true },
     { path: '/playlist', component: Playlist, name: 'playlist', props: true },
-    { path: '/now-playing', component: Home, name: 'nowPlaying', props: true },
+    { path: '/now-playing', component: PodcastList, name: 'nowPlaying', props: true },
   ]
 });
 
@@ -41,5 +42,4 @@ new Vue({
   el: '#app-main',
   router: router,
   store,
-  components: {home: Home}
 });
