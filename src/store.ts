@@ -1,29 +1,11 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import createPersistedState from 'vuex-persistedstate';
+const createPersistedState = require('vuex-persistedstate');
 
 import {fetchFeed} from './lib/feedManager';
 import {Feed, FeedItem} from './lib/types';
 
 Vue.use(Vuex);
-
-/*
-function filterLinkedList(list: Playlist, filter: (item: PlaylistItem) => boolean) {
-  const iter = (acc: PlaylistItem[], item: PlaylistItem): PlaylistItem[] => {
-    if (filter(item)) acc.push(item);
-    if (item.child === null) return acc;
-    return iter(acc, list.children[item.child]);
-  };
-
-  if (list.root === null) return [];
-  return iter([], list.root);
-}
-
-function findLastByFeed(playlist: Playlist, feed: string) {
-  const itemsInFeed = filterLinkedList(playlist, (item) => item.feedId === feed);
-  return itemsInFeed[itemsInFeed.length - 1];
-}
-*/
 
 const store = new Vuex.Store({
   plugins: [createPersistedState()],
@@ -33,10 +15,6 @@ const store = new Vuex.Store({
     playlist: [] as string[],
   },
   getters: {
-    /*
-    feedItems(state): return {[feed: string]: FeedItem[]} {
-    }
-    */
   },
   mutations: {
     addEpisodeToPlaylist(state, feedItem: FeedItem) {

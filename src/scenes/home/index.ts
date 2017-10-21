@@ -23,7 +23,7 @@ export default class Home extends Vue {
     );
   }
 
-  fileSelected(e) {
+  fileSelected(e: any) {
     const reader = new FileReader();
     reader.onload = (event) => {
       const opmlText = (event.target as any).result;
