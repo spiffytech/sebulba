@@ -1,0 +1,6 @@
+#nowPlayingImage {
+  background-image: url("{{podcast.image}}");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 10em;
+}

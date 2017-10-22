@@ -6,7 +6,7 @@
       :episode="episode"
       :key="episode.podcastId + episode.guid"
     >
-      <i class="material-icons" href="#" @click="">
+      <i class="material-icons" href="#" @click="playEpisode(episode)">
         play_arrow
       </i>
     </episode-view>

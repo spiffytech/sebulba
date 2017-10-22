@@ -3,7 +3,7 @@ import Vuex from 'vuex';
 const createPersistedState = require('vuex-persistedstate');
 
 import {fetchPodcast} from './lib/feedManager';
-import {Podcast, Episode} from './lib/types';
+    import {Episode, Player, Podcast} from './lib/types';
 
 Vue.use(Vuex);
 
@@ -18,6 +18,7 @@ const store = new Vuex.Store({
     podcasts: {} as {[url: string]: Podcast},
     episodes: {} as {[podcastId: string]: {[guid: string]: Episode}},
     playlist: [] as PlaylistItem[],
+    player: {episode: null, playing: false} as Player,
   },
   getters: {
     playlist(state): Episode[] {
@@ -49,6 +50,11 @@ const store = new Vuex.Store({
     },
     clearPlaylist(state) {
       state.playlist = [];
+    },
+
+    playEpisode(state, episode) {
+      state.player.episode = episode;
+      state.player.playing = true;
     }
   },
   actions: {
@@ -64,6 +70,10 @@ const store = new Vuex.Store({
       } catch (ex) {
         context.commit('updatePodcast', {...podcast, error: ex.message});
       }
+    },
+
+    playEpisode(context, episode) {
+      context.commit('playEpisode', episode);
     }
   }
 });

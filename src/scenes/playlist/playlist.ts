@@ -1,6 +1,8 @@
 import Vue from 'vue';
 import Component from 'vue-class-component';
 
+import {Episode} from '../../lib/types';
+
 import EpisodeView from '../../components/episode/episode';
 import AppNav from '../../components/appnav/appnav';
 
@@ -17,5 +19,9 @@ export default class Playlist extends Vue {
 
   get episodes() {
     return this.$store.getters.playlist;
+  }
+
+  playEpisode(episode: Episode) {
+    this.$store.dispatch('playEpisode', episode);
   }
 }

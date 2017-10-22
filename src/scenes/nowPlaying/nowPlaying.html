@@ -1,0 +1,15 @@
+<app-nav v-if="episode === null" activeTab="nowPlaying">
+  Nothing playing
+</app-nav>
+
+<app-nav v-else activeTab="nowPlaying">
+  <div class="mdc-card">
+    <section id="nowPlayingImage" :style="cardStyleObject"></section>
+    <section class="mdc-card__primary"
+      <h1 class="mdc-card__title mdc-card__title--large">{{episode.title}}</h1>
+      <h2 class="mdc-card__subtitle">{{podcast.name}}</h2>
+    </section>
+
+    <section class="mdc-card__supporting-text" v-html="episode.content"></section>
+  </div>
+</app-nav>

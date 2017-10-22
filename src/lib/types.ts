@@ -19,3 +19,14 @@ export interface Episode {
   content: string;
   enclosure: Enclosure;
 }
+
+export interface HistoryItem {
+  episodeId: string;
+  finished: boolean;
+  listenTime: number;
+}
+
+export interface Player {
+  episode: Episode | null;
+  playing: boolean;
+}

@@ -9,6 +9,7 @@ mdc.autoInit();
 
 import PodcastList from './scenes/podcastList/podcastList';
 import PodcastView from './scenes/podcastView/podcastView';
+import NowPlaying from './scenes/nowPlaying/nowPlaying';
 import Playlist from './scenes/playlist/playlist';
 import store from './store';
 
@@ -30,7 +31,7 @@ let router = new VueRouter({
     { path: '/podcast/:id', component: PodcastView, name: 'podcast', props: true },
     { path: '/podcasts', component: PodcastList, name: 'podcasts', props: true },
     { path: '/playlist', component: Playlist, name: 'playlist', props: true },
-    { path: '/now-playing', component: PodcastList, name: 'nowPlaying', props: true },
+    { path: '/now-playing', component: NowPlaying, name: 'nowPlaying', props: true },
   ]
 });
 
