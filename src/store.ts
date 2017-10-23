@@ -2,6 +2,8 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 const createPersistedState = require('vuex-persistedstate');
 
+import * as player from './lib/player';
+
 import {fetchPodcast} from './lib/feedManager';
     import {Episode, Player, Podcast} from './lib/types';
 
@@ -55,6 +57,11 @@ const store = new Vuex.Store({
     playEpisode(state, episode) {
       state.player.episode = episode;
       state.player.playing = true;
+    },
+
+    setEpisodeDuration(state, {episode, duration}) {
+      console.log(duration);
+      state.episodes[episode.podcastId][episode.guid].duration = duration;
     }
   },
   actions: {
@@ -74,6 +81,7 @@ const store = new Vuex.Store({
 
     playEpisode(context, episode) {
       context.commit('playEpisode', episode);
+      player.playEpisode(episode, store);
     }
   }
 });

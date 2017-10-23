@@ -7,7 +7,13 @@
     <section id="nowPlayingImage" :style="cardStyleObject"></section>
     <section class="mdc-card__primary"
       <h1 class="mdc-card__title mdc-card__title--large">{{episode.title}}</h1>
-      <h2 class="mdc-card__subtitle">{{podcast.name}}</h2>
+      <h2 class="mdc-card__subtitle">
+        {{podcast.name}}
+        <i class="material-icons">
+          alarm
+        </i>
+        {{duration}}
+      </h2>
     </section>
 
     <section class="mdc-card__supporting-text" v-html="episode.content"></section>

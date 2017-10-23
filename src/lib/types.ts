@@ -18,6 +18,7 @@ export interface Episode {
   pubDate: string;
   content: string;
   enclosure: Enclosure;
+  duration?: number;
 }
 
 export interface HistoryItem {

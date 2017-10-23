@@ -16,6 +16,13 @@ export default class NowPlaying extends Vue {
     return {backgroundImage: `url("${this.podcast.image}")`};
   }
 
+  get duration(): string | null {
+    const toTimestamp = (n: number) => new Date(n * 1000).toISOString().substr(11, 8);
+    const duration = this.$store.state.player.episode.duration;
+    if (!duration) return 'unknown duration';
+    return toTimestamp(duration);
+  }
+
   get episode(): Episode {
     return this.$store.state.player.episode;
   }
