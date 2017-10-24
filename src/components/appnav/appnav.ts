@@ -16,6 +16,18 @@ export default class AppNav extends Vue {
     return this.activeTab === label ? 'mdc-tab--active' : '';
   }
 
+  get showPrimaryActionButton() {
+    return Boolean(this.$store.state.player.episode);
+  }
+
+  get primaryActionIcon() {
+    return this.$store.state.player.playing ? 'play_arrow' : 'pause';
+  }
+
+  togglePlayPause() {
+    this.$store.dispatch('togglePlayPause');
+  }
+
   refresh() {
     Object.keys(this.$store.state.podcasts).forEach((podcastUrl) =>
       this.$store.dispatch('updatePodcast', this.$store.state.podcasts[podcastUrl])

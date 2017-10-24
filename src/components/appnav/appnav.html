@@ -1,4 +1,4 @@
-<div class="">
+<div>
   <input @change="fileSelected" name="opml" type="file">
   <button @click="refresh">Refresh podcasts</button>
 
@@ -26,5 +26,17 @@
 
     <span class="mdc-tab-bar__indicator"></span>
   </nav>
+
   <slot></slot>
+
+  <button
+    v-if="showPrimaryActionButton"
+    @click="togglePlayPause"
+    class="mdc-fab material-icons app-fab--absolute"
+    aria-label="Favorite"
+ >
+    <span class="mdc-fab__icon">
+      {{primaryActionIcon}}
+    </span>
+  </button>
 </div>

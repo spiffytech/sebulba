@@ -47,8 +47,13 @@ const store = new Vuex.Store({
       Vue.set(state.podcasts, podcast.url, podcast);
     },
     updateEpisode(state, {podcast, episode}: {podcast: Podcast, episode: Episode}) {
+      const existingEpisode = state.episodes[episode.podcastId][episode.guid];
+      const updatedEpisode = {
+        ...episode,
+        duration: episode.duration || existingEpisode.duration,
+      };
       Vue.set(state.episodes, podcast.url, state.episodes[podcast.url] || {});
-      Vue.set(state.episodes[podcast.url], episode.guid, episode);
+      Vue.set(state.episodes[podcast.url], episode.guid, updatedEpisode);
     },
     clearPlaylist(state) {
       state.playlist = [];
@@ -59,9 +64,8 @@ const store = new Vuex.Store({
       state.player.playing = true;
     },
 
-    setEpisodeDuration(state, {episode, duration}) {
-      console.log(duration);
-      state.episodes[episode.podcastId][episode.guid].duration = duration;
+    togglePlayerState(state) {
+      state.player.playing = !state.player.playing;
     }
   },
   actions: {
@@ -81,8 +85,22 @@ const store = new Vuex.Store({
 
     playEpisode(context, episode) {
       context.commit('playEpisode', episode);
-      player.playEpisode(episode, store);
-    }
+      context.dispatch('setPlayerState');
+    },
+
+    togglePlayPause(context) {
+      context.commit('togglePlayerState');
+      context.dispatch('setPlayerState');
+    },
+
+    setPlayerState(context) {
+      const episode = context.state.player.episode;
+      player.setState({
+        src: episode ? episode.enclosure.url : null,
+        playing: context.state.player.playing,
+        playbackRate: 1,
+      });
+    },
   }
 });
 export default store;

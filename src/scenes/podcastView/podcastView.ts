@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Component from 'vue-class-component';
 
 import EpisodeView from '../../components/episode/episode';
+import AppNav from '../../components/appnav/appnav';
 
 import {Episode} from '../../lib/types';
 
@@ -10,7 +11,7 @@ import {Episode} from '../../lib/types';
   props: {
     id: String,
   },
-  components: {EpisodeView},
+  components: {AppNav, EpisodeView},
 })
 export default class PodcastView extends Vue {
   id: string;
