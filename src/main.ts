@@ -7,6 +7,8 @@ require('material-components-web/dist/material-components-web.min.css');
 const mdc = require('material-components-web');
 mdc.autoInit();
 
+require('./static/style.css');
+
 import PodcastList from './scenes/podcastList/podcastList';
 import PodcastView from './scenes/podcastView/podcastView';
 import NowPlaying from './scenes/nowPlaying/nowPlaying';
