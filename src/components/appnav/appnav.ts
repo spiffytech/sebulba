@@ -7,17 +7,22 @@ import {parseOpml} from '../../lib/feedManager';
   template: require('./appnav.html'),
   props: {
     activeTab: String,
+    showPrimaryActionButton: {
+      type: Boolean,
+      default: true,
+    },
   },
 })
 export default class AppNav extends Vue {
   activeTab: string;
+  showPrimaryActionButton: boolean;
 
   activeClass(label: string) {
     return this.activeTab === label ? 'mdc-tab--active' : '';
   }
 
-  get showPrimaryActionButton() {
-    return Boolean(this.$store.state.player.episode);
+  get showPrimaryActionButton_() {
+    return Boolean(this.$store.state.player.episode) && this.showPrimaryActionButton;
   }
 
   get primaryActionIcon() {
@@ -26,6 +31,7 @@ export default class AppNav extends Vue {
 
   togglePlayPause() {
     this.$store.dispatch('togglePlayPause');
+    this.$router.push({name: 'nowPlaying'});
   }
 
   refresh() {

@@ -2,7 +2,7 @@
   Nothing playing
 </app-nav>
 
-<app-nav v-else activeTab="nowPlaying">
+<app-nav v-else activeTab="nowPlaying" :showPrimaryActionButton=false>
   <div class="mdc-card">
     <section id="nowPlayingImage" :style="cardStyleObject"></section>
     <section class="mdc-card__primary"
