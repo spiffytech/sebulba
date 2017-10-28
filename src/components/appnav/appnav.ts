@@ -22,15 +22,16 @@ export default class AppNav extends Vue {
   }
 
   get showPrimaryActionButton_() {
-    return Boolean(this.$store.state.player.episode) && this.showPrimaryActionButton;
+    // return Boolean(this.$store.state.player.episode) && this.showPrimaryActionButton;
+    return Boolean(this.$store.state.player.episode);
   }
 
   get primaryActionIcon() {
-    return this.$store.state.player.playing ? 'play_arrow' : 'pause';
+    return this.$store.state.player.playing ? 'pause' : 'play_arrow';
   }
 
   togglePlayPause() {
-    this.$store.dispatch('togglePlayPause');
+    this.$store.commit('togglePlayPause');
     this.$router.push({name: 'nowPlaying'});
   }
 

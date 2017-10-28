@@ -27,4 +27,8 @@ export default class PodcastView extends Vue {
   addToPlaylist(episode: Episode) {
     this.$store.commit('addEpisodeToPlaylist', episode);
   }
+
+  refresh() {
+    this.$store.dispatch('updatePodcast', this.$store.state.podcasts[this.id]);
+  }
 }

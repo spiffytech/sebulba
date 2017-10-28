@@ -30,4 +30,5 @@ export interface HistoryItem {
 export interface Player {
   episode: Episode | null;
   playing: boolean;
+  timestamp: number;
 }

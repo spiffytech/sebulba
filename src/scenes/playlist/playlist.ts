@@ -22,6 +22,6 @@ export default class Playlist extends Vue {
   }
 
   playEpisode(episode: Episode) {
-    this.$store.dispatch('playEpisode', episode);
+    this.$store.commit('playEpisode', episode);
   }
 }

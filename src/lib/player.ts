@@ -1,4 +1,4 @@
-let currentTrack: HTMLAudioElement | null = null;
+let currentTrack: HTMLAudioElement = new Audio();
 
 import {Episode} from './types';
 import Store from '../store';
@@ -25,24 +25,45 @@ export async function playEpisode(episode: Episode, store: typeof Store) {
   currentTrack = track;
 }
 
-export function setState(
-  {src, playing, playbackRate}:
-  { src: string | null; playing: boolean; playbackRate: number; }
-) {
+function resetAudio(src?: string) {
+  // Prevent old and new Audio from playing over each other
+  currentTrack.pause();
+
+  /*
+  const duration = await fetchDuration(episode);
+  Store.commit('updateEpisode', {...episode, duration});
+  */
+
+  const track = new Audio(src);
+  track.ontimeupdate = () => {
+    Store.commit('updatePlayedTimestamp', track.currentTime);
+  };
+  return track;
+}
+
+export function setPlayingState(playing: boolean) {
+  if (playing) {
+    currentTrack.play();
+  } else {
+    currentTrack.pause();
+  }
+}
+
+export function setCurrentTime(timestamp: number) {
+  currentTrack.currentTime = timestamp;
+}
+
+export function setPlaybackRate(playbackRate: number) {
+  currentTrack.playbackRate = playbackRate;
+}
+
+export function setSrc(src: string | null) {
   if (!src) {
-    currentTrack = null;
+    currentTrack = resetAudio(undefined);
     return;
   }
 
-  if (!currentTrack || currentTrack.currentSrc !== src) {
-    currentTrack = new Audio(src);
+  if (currentTrack.currentSrc !== src) {
+    currentTrack = resetAudio(src);
   }
-
-  if (playing) {
-    currentTrack.pause();
-  } else {
-    currentTrack.play();
-  }
-
-  currentTrack.playbackRate = playbackRate;
 }
