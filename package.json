@@ -52,7 +52,7 @@
     },
     "scripts": {
         "compile": "webpack --config config/webpack.config.js",
-        "dev-server": "webpack-dev-server --config config/webpack.config.dev.js --port 3000"
+        "dev": "webpack-dev-server --config config/webpack.config.dev.js --port 3000"
     },
     "author": "",
     "license": "ISC",

@@ -5,7 +5,7 @@ const createPersistedState = require('vuex-persistedstate');
 import * as libplayer from './lib/player';
 
 import {fetchPodcast} from './lib/feedManager';
-    import {Episode, Player, Podcast} from './lib/types';
+import {Episode, Player, Podcast} from './lib/types';
 
 Vue.use(Vuex);
 
@@ -45,6 +45,7 @@ const store = new Vuex.Store({
     },
     updatePodcast(state, podcast: Podcast) {
       Vue.set(state.podcasts, podcast.url, podcast);
+      if (!state.episodes[podcast.url]) Vue.set(state.episodes, podcast.url, []);
     },
     updateEpisode(state, {podcast, episode}: {podcast: Podcast, episode: Episode}) {
       const existingEpisode =
