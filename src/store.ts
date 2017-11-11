@@ -45,7 +45,7 @@ const store = new Vuex.Store({
     },
     updatePodcast(state, podcast: Podcast) {
       Vue.set(state.podcasts, podcast.url, podcast);
-      if (!state.episodes[podcast.url]) Vue.set(state.episodes, podcast.url, []);
+      if (!state.episodes[podcast.url]) Vue.set(state.episodes, podcast.url, {});
     },
     updateEpisode(state, {podcast, episode}: {podcast: Podcast, episode: Episode}) {
       const existingEpisode =

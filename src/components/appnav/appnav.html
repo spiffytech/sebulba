@@ -29,14 +29,26 @@
 
   <slot></slot>
 
-  <button
-    v-if="showPrimaryActionButton_"
-    @click="togglePlayPause"
-    class="mdc-fab material-icons app-fab--absolute"
-    aria-label="Favorite"
- >
-    <span class="mdc-fab__icon">
-      {{primaryActionIcon}}
-    </span>
   </button>
+  <div id="footer">
+    <button class="mdc-button" @click="seekBackward">
+      <i class="material-icons mdc-button__icon">fast_rewind</i>
+    </button>
+
+    <button class="mdc-button" @click="togglePlayPause">
+      <i class="material-icons mdc-button__icon">{{primaryActionIcon}}</i>
+    </button>
+
+    <button class="mdc-button" @click="seekForward">
+      <i class="material-icons mdc-button__icon">fast_forward</i>
+    </button>
+
+    <slider
+      :min="sliderMin"
+      :value="sliderValue"
+      :max="sliderMax"
+      @change="onSlideChange"
+      @input="onSlideInput"
+    ></slider>
+  </div>
 </div>
